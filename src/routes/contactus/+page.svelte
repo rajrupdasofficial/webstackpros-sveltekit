@@ -1,7 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import { Contact } from "lucide-svelte";
-  import * as Alert from "$lib/components/ui/alert";
+ 
 
   let username = "";
   let email = "";
@@ -31,9 +30,11 @@
       } else {
         // Handle the error
         console.error("Error sending form data to the server");
+        isProcessing = false;
       }
     } catch (error) {
       console.error("Error:", error);
+      isProcessing = false;
     } finally {
       isProcessing = false;
     }

@@ -1,6 +1,60 @@
 <script lang="ts">
+import { enhance } from "$app/forms";
+
+let first_name = '';
+let last_name = '';
+let email = '';
+let password = '';
+let password_confirmation = '';
+let showAlert = false;
+let isProcessing = false;
+let showduplicateuserbanner = false;
+
+const handleSubmit = async(event:Event)=>{
+  event.preventDefault();
+  isProcessing = true;
+  const formData  = new FormData();
+  formData.append("firstname",first_name);
+  formData.append("lastname",last_name);
+  formData.append("email",email);
+  formData.append("password",password),
+  formData.append("confirmpassword",password_confirmation)
+
+  try {
+      const response = await fetch("/api/auth/signup/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.status === 200) {
+        showAlert = true;
+        showduplicateuserbanner=false;
+      } else if(response.status === 409) {
+        // Handle the error
+        showAlert=false
+        showduplicateuserbanner = true;
+        console.error("User with same email id exists");
+        isProcessing = false;
+      }else{
+        console.log("error there is some problem with the server ")
+
+        isProcessing=false
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      isProcessing = false;
+    } finally {
+      isProcessing = false;
+    }
+}
+
 
 </script>
+
+
+<svelte:head>
+  <title>Webstackpros | Authentication | Signup for continue</title>
+</svelte:head>
 
 
 <section class="bg-white dark:bg-gray-900">
@@ -71,8 +125,87 @@
               quibusdam aperiam voluptatum.
             </p>
           </div>
+         
+            {#if showAlert}
+              <div role="alert" class="rounded-xl border border-gray-100 bg-white p-4">
+                <div class="flex items-start gap-4">
+                  <span class="text-green-600">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </span>
   
-          <form action="#" class="mt-8 grid grid-cols-6 gap-6">
+                  <div class="flex-1">
+                    <strong class="block font-medium text-gray-900"> User hasbeen signedup successfully </strong>
+  
+                    <p class="mt-1 text-sm text-gray-700">Thank you for signup</p>
+                  </div>
+  
+                  <button
+                    class="text-gray-500 transition hover:text-gray-600"
+                    on:click={() => (showAlert = false)}
+                  >
+                    <span class="sr-only">Dismiss popup</span>
+  
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            {/if}
+    
+<!-- show duplicate user banner -->
+           
+              {#if showduplicateuserbanner}
+              <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4">
+                <strong class="block font-medium text-red-800"> User with the same email exists </strong>
+              
+                <p class="mt-2 text-sm text-red-700">
+                We have already found a user with the same email id
+                please signup with a different email id
+                </p>
+                <button
+                class="text-gray-500 transition hover:text-gray-600"
+                on:click={() => (showAlert = false)}
+              >
+                <span class="sr-only">Dismiss popup</span>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              </div>
+              
+              {/if}
+          
+
+          <form action="#" class="mt-8 grid grid-cols-6 gap-6" method="POST" enctype="multipart/form-data" use:enhance>
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="FirstName"
@@ -83,8 +216,10 @@
   
               <input
                 type="text"
-                id="FirstName"
+                id="first_name"
                 name="first_name"
+                bind:value={first_name}
+
                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
               />
             </div>
@@ -99,8 +234,9 @@
   
               <input
                 type="text"
-                id="LastName"
+                id="last_name"
                 name="last_name"
+                bind:value={last_name}
                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
               />
             </div>
@@ -112,8 +248,9 @@
   
               <input
                 type="email"
-                id="Email"
+                id="email"
                 name="email"
+                bind:value={email}
                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
               />
             </div>
@@ -128,8 +265,9 @@
   
               <input
                 type="password"
-                id="Password"
+                id="password"
                 name="password"
+                bind:value={password}
                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
               />
             </div>
@@ -144,8 +282,9 @@
   
               <input
                 type="password"
-                id="PasswordConfirmation"
+                id="password_confirmation"
                 name="password_confirmation"
+                bind:value={password_confirmation}
                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
               />
             </div>
@@ -168,24 +307,33 @@
             <div class="col-span-6">
               <p class="text-sm text-gray-500 dark:text-gray-400">
                 By creating an account, you agree to our
-                <a href="#" class="text-gray-700 underline dark:text-gray-200">
+                <a href="/toc" class="text-gray-700 underline dark:text-gray-200">
                   terms and conditions
                 </a>
                 and
-                <a href="#" class="text-gray-700 underline dark:text-gray-200"> privacy policy </a>.
+                <a href="/privacypolicy" class="text-gray-700 underline dark:text-gray-200"> privacy policy </a>.
               </p>
             </div>
   
             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
+                type="submit"
+                on:click={handleSubmit}
                 class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
               >
-                Create an account
+                 {#if isProcessing}
+                  <div class="flex items-center justify-center">
+                    <div class="mr-2 animate-spin rounded-full border-4 border-t-4 border-gray-200 h-6 w-6"></div>
+                    Processing...
+                  </div>
+                {:else}
+                  Create Account
+                {/if}
               </button>
   
               <p class="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">
                 Already have an account?
-                <a href="#" class="text-gray-700 underline dark:text-gray-200">Log in</a>.
+                <a href="/login" class="text-gray-700 underline dark:text-gray-200">Log in</a>.
               </p>
             </div>
           </form>
