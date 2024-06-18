@@ -1,9 +1,10 @@
 <script lang="ts">
-	import Herosection from "@/components/ui/herosection/+herosection.svelte";
-	import Pricingtable from "@/components/ui/pricingtable/+pricingtable.svelte";
+import Herosection from "@/components/ui/herosection/+herosection.svelte";
+import Pricingtable from "@/components/ui/pricingtable/+pricingtable.svelte";
 import Webstitecarousel from "@/components/ui/website/+webstitecarousel.svelte";
 import Appoffer from "@/components/ui/appoffer/+appoffer.svelte"
-	import Ourservices from "@/components/ui/ourservices/+ourservices.svelte";
+import Ourservices from "@/components/ui/ourservices/+ourservices.svelte";	
+	import Portfolio from "@/components/ui/portfolio/+portfolio.svelte";
 </script>
 
 <!-- header carousel section -->
@@ -21,7 +22,7 @@ import Appoffer from "@/components/ui/appoffer/+appoffer.svelte"
     </div>
 </div>
 <!-- app offer -->
-<div class="flex justify-center items-center min-h-screen lg:mt-[-630px]">
+<div class="flex justify-center items-center min-h-screen lg:mt-[-330px]">
     <div class="max-w-screen-2xl w-full px-4">
         <Appoffer/>
     </div>
@@ -32,5 +33,12 @@ import Appoffer from "@/components/ui/appoffer/+appoffer.svelte"
     <div class="max-w-screen-2xl w-full px-4">
         <Ourservices/>
     </div>
-
  </div>
+ <!-- Our portfolio -->
+  <div class="flex justify-center items-center min-h-screen ">
+    <div class="max-w-screen-2xl w-full px-4">
+        <h3 class="text-5xl flex justify-center items-center mb-10 font-bold text-slate-900">Our Portfolio</h3>
+        <Portfolio/>
+    </div>
+  </div>
+ 
