@@ -1,5 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
+	import { error } from "@sveltejs/kit";
 let email = '';
 let password = '';
 
@@ -14,6 +15,7 @@ const handleSubmit =  async(event:Event)=>{
   const formData  = new FormData();
   formData.append("email",email);
   formData.append("password",password);
+  // login api logic
   try {
     const response = await fetch("/api/auth/login/", {
         method: "POST",
@@ -52,6 +54,7 @@ const handleSubmit =  async(event:Event)=>{
       isProcessing = false;
     }
 }
+
 
 </script>
 
@@ -197,7 +200,7 @@ const handleSubmit =  async(event:Event)=>{
         
         {/if}
          
-          <form action="#" class="mt-8 grid grid-cols-6 gap-6">
+          <form action="#" class="mt-8 grid grid-cols-6 gap-6" use:enhance>
             <div class="col-span-6">
               <label for="Email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
                 Email
