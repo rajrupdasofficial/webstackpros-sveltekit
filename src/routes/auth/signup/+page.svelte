@@ -29,6 +29,7 @@ const handleSubmit = async(event:Event)=>{
       if (response.status === 200) {
         showAlert = true;
         showduplicateuserbanner=false;
+        window.location.href="/auth/login"
       } else if(response.status === 409) {
         // Handle the error
         showAlert=false
@@ -271,50 +272,6 @@ const handleSubmit = async(event:Event)=>{
                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
               />
             </div>
-  
-            <div class="col-span-6 sm:col-span-3">
-              <label
-                for="PasswordConfirmation"
-                class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-              >
-                Password Confirmation
-              </label>
-  
-              <input
-                type="password"
-                id="password_confirmation"
-                name="password_confirmation"
-                bind:value={password_confirmation}
-                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
-              />
-            </div>
-  
-            <div class="col-span-6">
-              <label for="MarketingAccept" class="flex gap-4">
-                <input
-                  type="checkbox"
-                  id="MarketingAccept"
-                  name="marketing_accept"
-                  class="size-5 rounded-md border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-offset-gray-900"
-                />
-  
-                <span class="text-sm text-gray-700 dark:text-gray-200">
-                  I want to receive emails about events, product updates and company announcements.
-                </span>
-              </label>
-            </div>
-  
-            <div class="col-span-6">
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                By creating an account, you agree to our
-                <a href="/toc" class="text-gray-700 underline dark:text-gray-200">
-                  terms and conditions
-                </a>
-                and
-                <a href="/privacypolicy" class="text-gray-700 underline dark:text-gray-200"> privacy policy </a>.
-              </p>
-            </div>
-  
             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
                 type="submit"
@@ -333,7 +290,7 @@ const handleSubmit = async(event:Event)=>{
   
               <p class="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">
                 Already have an account?
-                <a href="/login" class="text-gray-700 underline dark:text-gray-200">Log in</a>.
+                <a href="/auth/login" class="text-gray-700 underline dark:text-gray-200">Log in</a>.
               </p>
             </div>
           </form>

@@ -2,15 +2,15 @@
       import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
 </script>
 
-<div class="flex justify-center items-center min-h-screen lg:mt-[-130px]">
+<div class="flex justify-center items-center min-h-screen lg:mt-[-130px] dark:bg-black">
     <div class="max-w-screen-xl w-full px-4">
         <div class="lg:mb-[50px] sm:mb-[10px] lg:ml-[55px] items-center justify-center">
             <h2 class="lg:text-5xl sm:text-xl"><strong>Webdesign and Development packages</strong></h2>
             <p class="lg:text-2xl sm:text-md lg:mt-[15px] sm:mt-8">No Hidden Cost | No AMC | We Believe in Transparency and Quality Service</p>
         </div>
-        <div class="flex flex-col md:flex-row overflow-x-auto">
+        <div class="flex flex-col md:flex-row overflow-x-auto ">
             <!-- Table 1: Basic -->
-            <div class="w-full md:w-72 mx-2 bg-slate-200 shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
+            <div class="w-full md:w-72 mx-2 bg-slate-200 dark:bg-slate-950 shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
                 <div class="px-6 py-4 bg-blue-800 text-white">
                     <h3 class="text-lg font-bold mb-2">Basic</h3>
                     <p class="text-xl font-bold mb-4">₹3,350 /-</p>
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Table 2: Personal -->
-            <div class="w-full md:w-72 mx-2 bg-white shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
+            <div class="w-full md:w-72 mx-2 bg-white dark:bg-slate-900 shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
                 <div class="px-6 py-4 bg-blue-800 text-white">
                     <h3 class="text-lg font-bold mb-2">Personal</h3>
                     <p class="text-xl font-bold mb-4">₹7,500 /-</p>
@@ -55,7 +55,7 @@
             </div>
 
             <!-- Table 3: Business -->
-            <div class="w-full md:w-72 mx-2 bg-slate-200 shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
+            <div class="w-full md:w-72 mx-2 bg-slate-200 dark:bg-slate-950 shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
                 <div class="px-6 py-4 bg-blue-800 text-white">
                     <h3 class="text-lg font-bold mb-2">Business</h3>
                     <p class="text-xl font-bold mb-4">₹9,500 /-</p>
@@ -84,7 +84,7 @@
             </div>
 
             <!-- Table 4: Ecommerce -->
-            <div class="w-full md:w-72 mx-2 bg-white shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
+            <div class="w-full md:w-72 mx-2 bg-white dark:bg-slate-900 shadow-lg rounded-lg overflow-hidden mb-4 md:mb-0">
                 <div class="px-6 py-4 bg-blue-800 text-white">
                     <h3 class="text-lg font-bold mb-2">Ecommerce</h3>
                     <p class="text-xl font-bold mb-4">₹17,500 /-</p>

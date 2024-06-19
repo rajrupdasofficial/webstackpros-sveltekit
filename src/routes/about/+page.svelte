@@ -8,8 +8,8 @@
     
 </svelte:head>
 
-<div class="flex justify-center items-center bg-slate-100 px-4 py-12 bg-cover bg-center" style="background-image: url('https://picsum.photos/2000/800')">
-  <article class="max-w-xl rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
+<div class="flex justify-center items-center bg-slate-100 dark:bg-slate-900 px-4 py-12 bg-cover bg-center" style="background-image: url('https://picsum.photos/2000/800')">
+  <article class="max-w-xl rounded-lg border border-gray-100 bg-white dark:bg-slate-950 p-4 shadow-sm transition hover:shadow-lg sm:p-6">
     <span class="inline-block rounded bg-blue-600 p-2 text-white">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -19,7 +19,7 @@
     </span>
 
     <a href="/">
-      <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+      <h3 class="mt-0.5 text-lg font-medium text-gray-900 dark:text-white">
         A little About Us
       </h3>
     </a>

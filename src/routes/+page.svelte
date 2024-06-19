@@ -16,7 +16,7 @@ import Ourservices from "@/components/ui/ourservices/+ourservices.svelte";
 <Herosection/>
 </div>
 <!-- pricing section -->
-<div class="flex justify-center items-center min-h-screen bg-gray-100">
+<div class="flex justify-center items-center min-h-screen">
     <div class="max-w-screen-2xl w-full px-4">
         <Pricingtable />
     </div>
@@ -37,7 +37,7 @@ import Ourservices from "@/components/ui/ourservices/+ourservices.svelte";
  <!-- Our portfolio -->
   <div class="flex justify-center items-center min-h-screen ">
     <div class="max-w-screen-2xl w-full px-4">
-        <h3 class="text-5xl flex justify-center items-center mb-10 font-bold text-slate-900">Our Portfolio</h3>
+        <h3 class="text-5xl flex justify-center items-center mb-10 font-bold text-slate-900 dark:text-white">Our Portfolio</h3>
         <Portfolio/>
     </div>
   </div>
