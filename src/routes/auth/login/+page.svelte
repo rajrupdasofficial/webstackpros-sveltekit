@@ -200,7 +200,7 @@ const handleSubmit =  async(event:Event)=>{
         
         {/if}
          
-          <form action="#" class="mt-8 grid grid-cols-6 gap-6" use:enhance>
+          <form action="#" method="POST" class="mt-8 grid grid-cols-6 gap-6" use:enhance>
             <div class="col-span-6">
               <label for="Email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
                 Email

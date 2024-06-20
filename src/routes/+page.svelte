@@ -4,7 +4,25 @@ import Pricingtable from "@/components/ui/pricingtable/+pricingtable.svelte";
 import Webstitecarousel from "@/components/ui/website/+webstitecarousel.svelte";
 import Appoffer from "@/components/ui/appoffer/+appoffer.svelte"
 import Ourservices from "@/components/ui/ourservices/+ourservices.svelte";	
-	import Portfolio from "@/components/ui/portfolio/+portfolio.svelte";
+import Portfolio from "@/components/ui/portfolio/+portfolio.svelte";
+// import { onMount } from 'svelte';
+// let user;
+// onMount(async () => {
+//         const response = await fetch('/api/auth/verifyauth', {
+//             credentials: 'include'
+//         });
+//         // const user = response.headers.get('user-status');
+        
+//         // const parsedata = JSON.parse(user)
+//         // const userid = parsedata.userid
+//         // console.log(userid)
+
+//         if (response.status===401){
+//             window.location.href="/auth/login";
+//         }
+
+        
+//     });
 </script>
 
 <!-- header carousel section -->

@@ -4,16 +4,21 @@ import jwt from 'jsonwebtoken';
 import { env } from '$env/dynamic/private';
 
 export const GET: RequestHandler = async (event) => {
-	const { token, refresh_token } = cookie.parse(event.request.headers.get('cookie') || '');
+	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
+	const { token, refresh_token } = cookies;
+	console.log('The token:', token);
 	const secretkey = env.SECRET_KEY;
-	if (!refresh_token) return new Response(null, { status: 401, statusText: 'Unauthorized user' });
+
+	if (!refresh_token) {
+		return new Response(null, { status: 401, statusText: 'Unauthorized user' });
+	}
 
 	try {
 		const user = jwt.verify(token, secretkey) as Record<string, string>;
 		return new Response(null, {
 			status: 200,
 			headers: {
-				'User-status': 'user=' + JSON.stringify(user)
+				'User-status': JSON.stringify(user)
 			}
 		});
 	} catch (error) {

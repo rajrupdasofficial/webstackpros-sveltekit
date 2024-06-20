@@ -3,6 +3,7 @@
 import "../app.css";
 import { ModeWatcher } from "mode-watcher";
 import Footer from "@/components/ui/footer/+footer.svelte";
+
 </script>
 <ModeWatcher />
 <Navbar/>
