@@ -6,7 +6,7 @@
 <footer class="bg-white lg:grid lg:grid-cols-5">
     <div class="relative block h-32 lg:col-span-2 lg:h-full">
       <img
-        src="/heros2.png"
+        src="https://pub-a45027e3ff724367a0c0f42dd4395e1a.r2.dev/heros2.png"
         alt="footerheroimage"
         class="absolute inset-0 h-full w-full object-cover"
       />
