@@ -30,5 +30,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: rajrupdas-webstackpro-62
-          entrypoint: "main.ts"
+          entrypoint: "build/server.js"
           root: "."
