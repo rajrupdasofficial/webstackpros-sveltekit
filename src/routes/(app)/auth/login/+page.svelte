@@ -44,6 +44,7 @@ const handleSubmit =  async(event:Event)=>{
       }
       else{
         console.log("something went wrong at server")
+        console.log(response.statusText)
         isProcessing=false
 
       }
