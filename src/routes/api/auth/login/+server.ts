@@ -63,6 +63,6 @@ export const POST: RequestHandler = async ({ request }) => {
 		});
 	} catch (error) {
 		console.log(error);
-		return new Response(null, { status: 500 });
+		return new Response(null, { status: 500, statusText: `Error occurred ${error}` });
 	}
 };
