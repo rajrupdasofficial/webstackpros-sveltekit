@@ -11,15 +11,15 @@
   }
   </style>
 
-<section class="bg-gray-50 lg:mt-[-220px]">
-  <div class="bg-gray-100">
+<section class="bg-gray-50 dark:bg-black  lg:mt-[-220px]">
+  <div class="bg-gray-100 dark:bg-black">
     <div class="mx-auto max-w-screen-2xl px-4 py-16 lg:flex lg:h-screen lg:items-center">
         <div class="mx-auto max-w-3xl px-8 py-12 text-center">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 repcompany">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 repcompany dark:text-white">
                 India Based IT company
             </h1>
 
-            <p class="text-base sm:text-lg">
+            <p class="text-base sm:text-lg dark:text-white">
                 with 5+ years of excellent performance
             </p>
         </div>
@@ -38,7 +38,7 @@
 
 
 <div class="container mt-[-180px]">
-  <div class="max-w-9xl mx-auto bg-white p-8 rounded-lg shadow-lg md:flex md:items-center">
+  <div class="max-w-9xl mx-auto bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg md:flex md:items-center">
       <div class="md:w-2/3 md:pr-8">
           <strong class="block text-2xl sm:text-2xl mb-4">Why you should choose Webstackpros for your next business project in Kolkata?</strong>
           <ol class="list-decimal text-lg sm:text-xl">

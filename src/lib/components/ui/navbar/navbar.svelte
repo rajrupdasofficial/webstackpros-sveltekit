@@ -40,7 +40,7 @@
   />
   <span class="sr-only">Toggle theme</span>
 </Button>
-    <a class="block text-teal-600 dark:text-teal-300" href="https://webstackpros.net">
+    <a class="block text-teal-600 dark:text-teal-300" href="/">
       <span class="sr-only">Home</span>
       <!-- <img src="" alt="logo"> -->
       Webstackpros
@@ -52,7 +52,7 @@
           <li>
             <a
               class="block py-2 px-4 text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-              href="https://webstackpros.net"
+              href="/about"
             >
               About
             </a>
@@ -63,14 +63,6 @@
               href="https://webstackpros.net"
             >
               Careers
-            </a>
-          </li>
-          <li>
-            <a
-              class="block py-2 px-4 text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-              href="https://webstackpros.net"
-            >
-              History
             </a>
           </li>
           <li>
@@ -97,23 +89,31 @@
               Blog
             </a>
           </li>
+          <li>
+            <a
+              class="block py-2 px-4 text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+              href="/contactus"
+            >
+              Contact
+            </a>
+          </li>
         </ul>
       </nav>
 
       <div class="flex items-center gap-4">
         <div class="sm:flex sm:gap-4">
-          <a
+          <!-- <a
             class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 dark:hover:bg-teal-500"
             href="https://webstackpros.net"
           >
             Login
-          </a>
-          <a
+          </a> -->
+          <!-- <a
             class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
             href="https://webstackpros.net"
           >
             Register
-          </a>
+          </a> -->
         </div>
 
         <button

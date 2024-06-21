@@ -16,7 +16,7 @@
           <Card.Root class="w-full h-full">
             <Card.Content class="flex flex-col h-full justify-center items-center p-6">
               <img src={`https://robohash.org/${5}?size=300x300`} alt="cutest kitten" />
-              <span class="text-3xl font-bold text-white">Title</span>
+              <!-- <span class="text-3xl font-bold text-white">Title</span> -->
             </Card.Content>
           </Card.Root>
         </div>

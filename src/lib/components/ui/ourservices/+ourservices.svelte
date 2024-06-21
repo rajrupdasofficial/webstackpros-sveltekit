@@ -2,7 +2,7 @@
 
 </script>
 <div class="flex flex-1 justify-center items-center">
-    <h3 class="lg:text-5xl font-bold text-slate-900 lg:mb-[50px] lg:mt-[90px]">Our Services</h3>
+    <h3 class="lg:text-5xl font-bold text-slate-900 lg:mb-[50px] lg:mt-[90px] dark:text-white">Our Services</h3>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
    
