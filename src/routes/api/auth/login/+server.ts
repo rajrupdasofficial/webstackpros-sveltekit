@@ -40,7 +40,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			useremail
 		};
 
-		const token = jwt.sign(userinformation, secretkey, { expiresIn: `${15 * 60 * 1000}` });
+		const token = jwt.sign(userinformation, secretkey, { expiresIn: `${1440 * 60 * 1000}` });
 		if (isadmin === true) {
 			return new Response(null, {
 				status: 301,

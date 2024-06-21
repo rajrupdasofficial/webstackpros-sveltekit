@@ -5,13 +5,22 @@ onMount(async()=>{
     const response = await fetch('/api/auth/verifyauth',{
         credentials:'include'
     });
+
+    if(response.status===401 || response.status===500 || response.status===404 || response.status==403){
+        window.location.href="/auth/login"
+    }else{
     const user = response.headers.get('user-status');
     const parsedata = JSON.parse(user)
     const isadmin = parsedata.isadmin;
-    console.log(isadmin)
     if(isadmin===false){
         window.location.href="/"
+    }else if(isadmin===null){
+        window.location.href="/"
+    }else{
+        console.log("error");
     }
+}
+   
 })
 </script>
 
