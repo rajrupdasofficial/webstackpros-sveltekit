@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-	import { error } from "@sveltejs/kit";
+	
 let email = '';
 let password = '';
 
