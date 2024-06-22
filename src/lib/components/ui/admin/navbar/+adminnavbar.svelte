@@ -32,7 +32,9 @@
       </DropdownMenu.Item>
       <DropdownMenu.Item class="text-lg text-gray-600 hover:text-gray-900">All Blog Posts</DropdownMenu.Item>
       <DropdownMenu.Item class="text-lg text-gray-600 hover:text-gray-900">All User</DropdownMenu.Item>
-      <DropdownMenu.Item class="text-lg text-gray-600 hover:text-gray-900">Others</DropdownMenu.Item>
+      <DropdownMenu.Item class="text-lg text-gray-600 hover:text-gray-900">
+      <a href="/admin/details/otherlinks">  Others</a>
+      </DropdownMenu.Item>
     </DropdownMenu.Group>
   </DropdownMenu.Content>
 </DropdownMenu.Root>
