@@ -22,12 +22,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const firebase_cofig = initializeApp(firebaseConfig);
 
 // Initialize Analytics
 
 // if (typeof window !== 'undefined') {
 //   co	analytics = getAnalytics(app);
 // }
-
-export { app };
