@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { files } from '$service-worker';
   import { onMount } from 'svelte';
 
   interface CustomRequestInit extends RequestInit {
@@ -34,10 +35,16 @@
   let sliderFiles: File[] = [];
   let uploadProgress: number[] = [];
   let uploadedFiles: number = 0;
+  let isProcessing = false;
+  let showAlert = false;
+  let showerroralert=false
 
   const handleFileUpload = async (event: Event) => {
     event.preventDefault();
-
+    isProcessing=true
+    showAlert=false
+    showerroralert=false
+    
     const formData = new FormData();
     sliderFiles.forEach((file, index) => {
       formData.append('files', file);
@@ -64,11 +71,24 @@
 
       if (response.ok) {
         console.log('Files uploaded successfully');
+        isProcessing=false
+        showAlert=true
       } else {
+        isProcessing=false
+        showAlert=false
+        showerroralert=true
         console.error('Error uploading files');
       }
     } catch (error) {
+      isProcessing=false
+      showAlert=false
+      showerroralert=true
+
       console.error('Error uploading files:', error);
+    }finally{
+      isProcessing=false
+      showAlert=false
+      showerroralert=false
     }
 
     console.log('Uploaded files:', sliderFiles);
@@ -91,6 +111,82 @@
       <h1 class="text-2xl font-bold sm:text-3xl">Create Slider</h1>
       <p class="mt-4 text-gray-500">Upload Images for Slider</p>
     </div>
+    {#if showAlert}
+    <div role="alert" class="rounded-xl border border-gray-100 bg-white p-4">
+      <div class="flex items-start gap-4">
+        <span class="text-green-600">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </span>
+
+        <div class="flex-1">
+          <strong class="block font-medium text-gray-900"> File upload success </strong>
+
+          <p class="mt-1 text-sm text-gray-700">File hasbeen uploaded successfully to firebase</p>
+        </div>
+
+        <button
+          class="text-gray-500 transition hover:text-gray-600"
+          on:click={() => (showAlert = false)}
+        >
+          <span class="sr-only">Dismiss popup</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  {/if}
+
+      <!-- user not found banner -->
+
+      {#if showerroralert}
+      <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4">
+        <strong class="block font-medium text-red-800"> Error something not right</strong>
+      
+        <p class="mt-2 text-sm text-red-700">
+      Something is not right
+        </p>
+        <button
+        class="text-gray-500 transition hover:text-gray-600"
+        on:click={() => (showerroralert = false)}
+      >
+        <span class="sr-only">Dismiss popup</span>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-6 w-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      </div>
+      
+      {/if}
 
     <form class="mx-auto mb-0 mt-8 max-w-md space-y-4">
       <div>
@@ -129,7 +225,14 @@
           class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
           on:click|preventDefault={handleFileUpload}
         >
-          Create Slider
+        {#if isProcessing}
+        <div class="flex items-center justify-center">
+          <div class="mr-2 animate-spin rounded-full border-4 border-t-4 border-gray-200 h-6 w-6"></div>
+          Processing...
+        </div>
+      {:else}
+        Upload files
+      {/if}
         </button>
       </div>
     </form>
@@ -146,8 +249,8 @@
       <div class="absolute bottom-0 left-0 w-full px-4 py-2">
         <div class="bg-white rounded-full overflow-hidden">
           <div
-            class="bg-blue-500 h-2 rounded-full"
-            style="width: {uploadProgress[index]}%;"
+            class="bg-blue-500 h-2 rounded-full w-[{uploadProgress[index]}%]"
+          
           ></div>
         </div>
       </div>

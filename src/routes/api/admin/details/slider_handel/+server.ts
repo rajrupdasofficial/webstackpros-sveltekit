@@ -15,6 +15,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const filedata = await request.formData();
 		const files = Array.from(filedata.values());
+		const databases = new Databases(client);
 		console.log(files);
 		console.log(filedata);
 		const batchSize = 10;
@@ -28,15 +29,26 @@ export const POST: RequestHandler = async ({ request }) => {
 						let uniqueFilename;
 						if (typeof file === 'string') {
 							uniqueFilename = `${crypto.randomUUID()}.${file.split('.').pop()}`;
+
+							await databases.createDocument(appwritedbid, slidercolid, crypto.randomUUID(), {
+								file: file,
+								filedata: uniqueFilename
+							});
 							console.log(uniqueFilename);
 						} else if (file instanceof Blob) {
 							uniqueFilename = `${crypto.randomUUID()}.${file.name.split('.').pop()}`;
-							console.log('elseif', uniqueFilename);
+
+							const filesize = file.size.toString();
+							const lastModified = file.lastModified.toString();
 							const firebase_storage_file_upload = await uploadImageToFirebase(
 								file,
 								uniqueFilename
 							);
-							console.log(firebase_storage_file_upload);
+							await databases.createDocument(appwritedbid, slidercolid, crypto.randomUUID(), {
+								filedata: uniqueFilename,
+								filesize: filesize,
+								lastmodified: lastModified
+							});
 						} else {
 							throw new Error('Unsupported file type');
 						}
