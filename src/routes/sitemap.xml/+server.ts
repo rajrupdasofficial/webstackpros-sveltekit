@@ -17,7 +17,16 @@ export async function GET() {
 	<lastmod>2024-06-22T07:06:56+01:00</lastmod>
 	<priority>1.0</priority>
     </url>
-
+ <url>
+	<loc>https://www.webstackpros.net/terms-and-conditions</loc>
+	<lastmod>2024-06-22T07:06:56+01:00</lastmod>
+	<priority>1.0</priority>
+    </url>
+	 <url>
+	<loc>https://www.webstackpros.net/privacy-policy</loc>
+	<lastmod>2024-06-22T07:06:56+01:00</lastmod>
+	<priority>1.0</priority>
+    </url>
 
         </urlset>`.trim(),
 		{ headers: { 'Content-Type': 'application/xml' } }
