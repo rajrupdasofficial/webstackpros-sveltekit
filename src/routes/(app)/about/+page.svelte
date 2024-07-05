@@ -1,4 +1,12 @@
 <script lang="ts">
+   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
+
+  let mounted = false;
+
+  onMount(() => {
+    mounted = true;
+  });
 </script>
 <svelte:head>
 
@@ -7,30 +15,88 @@
     
 </svelte:head>
 
-<div class="flex justify-center items-center bg-slate-100 dark:bg-slate-900 px-4 py-12 bg-cover bg-center" style="background-image: url('https://picsum.photos/2000/800')">
-  <article class="max-w-xl rounded-lg border border-gray-100 bg-white dark:bg-slate-950 p-4 shadow-sm transition hover:shadow-lg sm:p-6">
-    <span class="inline-block rounded bg-blue-600 p-2 text-white">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path d="M12 14l9-5-9-5-9 5 9 5z" />
-        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-      </svg>
-    </span>
-
-    <a href="/">
-      <h3 class="mt-0.5 text-lg font-medium text-gray-900 dark:text-white">
-        A little About Us
-      </h3>
-    </a>
-
-    <p class="mt-2 line-clamp-5 text-sm/relaxed">
-      Welcome to Webstackpros, where innovation meets reliability in IT solutions. At Webstackpros, we specialize in crafting cutting-edge digital experiences that drive businesses forward. Our team of passionate developers, designers, and strategists are dedicated to delivering tailored solutions that align perfectly with your goals.
-
-      With a commitment to excellence, we leverage the latest technologies to build robust web applications, scalable software solutions, and intuitive mobile apps. Whether you're a startup or a well-established enterprise, we're here to empower your digital journey with expertise in frontend and backend development, UI/UX design, cloud infrastructure, and more.
-
-      At Webstackpros, client satisfaction is at the heart of everything we do. We take pride in our collaborative approach, ensuring transparency and open communication throughout every project phase. Our mission is not just to meet expectations but to exceed them, delivering projects on time and within budget.
-
-      Partner with Webstackpros today and experience the difference. Let's innovate together and transform your vision into reality. Explore our portfolio and discover why businesses trust us for their digital transformation needs.
-    </p>
-  </article>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-4xl font-bold text-center mb-8">About WebStackPros</h1>
+  
+  {#if mounted}
+    <div in:fade="{{ duration: 1000 }}" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+      <div>
+        <img src="team.png" alt="WebStackPros Team" class="w-full rounded-lg shadow-lg">
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold mb-4">Your Digital Success Partner</h2>
+        <p class="text-gray-700 mb-4">
+          Welcome to WebStackPros, where innovation meets expertise in the digital realm. Since our inception in 2015, we've been on a mission to empower businesses with cutting-edge web solutions that drive growth, enhance online presence, and streamline operations.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Our journey began with a simple yet powerful idea: to bridge the gap between complex technology and business needs. Today, we stand proud as a full-service digital partner, offering a comprehensive suite of services that cover every aspect of your online journey.
+        </p>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <img src="webdevelopment.png" alt="Web Development" class="w-full rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+        <p class="text-gray-700">From responsive websites to complex web applications, our development team crafts digital experiences that captivate and convert. We leverage the latest technologies and frameworks to ensure your web presence is not just current, but ahead of the curve.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <img src="webhosting.png" alt="Web Hosting" class="w-full rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">Web Hosting</h3>
+        <p class="text-gray-700">Our robust hosting solutions provide the foundation for your online success. With state-of-the-art infrastructure and 24/7 monitoring, we ensure your website stays fast, secure, and always accessible to your audience.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <img src="itconsultency.png" alt="IT Consultancy" class="w-full rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">IT Consultancy</h3>
+        <p class="text-gray-700">Navigate the complex world of technology with confidence. Our seasoned consultants provide strategic guidance, helping you make informed decisions that align with your business goals and keep you ahead in the digital race.</p>
+      </div>
+    </div>
+    
+    <div class="text-center mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Why Choose WebStackPros?</h2>
+      <ul class="text-gray-700 mb-8">
+        <li>✓ 8+ years of industry experience</li>
+        <li>✓ Tailored solutions for your unique needs</li>
+        <li>✓ Cutting-edge technology and best practices</li>
+        <li>✓ Dedicated support and maintenance</li>
+        <li>✓ Competitive pricing and flexible plans</li>
+      </ul>
+    </div>
+    
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Our Approach</h2>
+      <p class="text-gray-700 mb-4">
+        At WebStackPros, we believe in a collaborative approach. We don't just work for you; we work with you. Our process begins with a deep dive into your business, understanding your goals, challenges, and vision. This allows us to craft solutions that are not just technically sound, but strategically aligned with your objectives.
+      </p>
+      <p class="text-gray-700 mb-4">
+        We pride ourselves on our agility and adaptability. In the fast-paced world of technology, staying still means falling behind. That's why we're constantly learning, evolving, and incorporating new technologies and methodologies into our work. This ensures that our clients always benefit from the latest innovations in the digital space.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+      <div>
+        <h2 class="text-2xl font-semibold mb-4">Our Commitment to Quality</h2>
+        <p class="text-gray-700 mb-4">
+          Quality is at the heart of everything we do. From the code we write to the strategies we develop, we maintain the highest standards of excellence. Our team undergoes regular training and certification to stay at the forefront of industry best practices.
+        </p>
+        <p class="text-gray-700 mb-4">
+          We also believe in the power of testing and iteration. Every solution we deliver goes through rigorous quality assurance processes to ensure it meets our exacting standards and your specific requirements.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold mb-4">Looking to the Future</h2>
+        <p class="text-gray-700 mb-4">
+          As we look to the future, we're excited about the possibilities that emerging technologies like AI, machine learning, and blockchain present. We're actively exploring how these can be integrated into our services to provide even more value to our clients.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Our vision is to continue growing, innovating, and leading in the digital space, always with our clients' success as our primary focus. We're not just building websites or providing IT solutions; we're helping build the digital future, one client at a time.
+        </p>
+      </div>
+    </div>
+    
+    <div class="text-center">
+      <a href="/contactus" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300">Start Your Digital Journey</a>
+    </div>
+  {/if}
 </div>
+
