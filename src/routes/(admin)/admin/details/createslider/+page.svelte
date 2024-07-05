@@ -1,11 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-
   onMount(async () => {
     const response = await fetch('/api/auth/verifyauth', {
       credentials: 'include'
     });
-
     if ([401, 500, 404, 403].includes(response.status)) {
       window.location.href = '/auth/login';
     } else {
