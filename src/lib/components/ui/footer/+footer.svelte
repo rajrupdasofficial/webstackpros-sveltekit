@@ -181,7 +181,9 @@
               <a href="/privacy-policy" class="text-gray-500 transition hover:opacity-75"> Privacy Policy </a>
             </li>
 
-
+            <li>
+              <a href="/return-and-refund-policy" class="text-gray-500 transition hover:opacity-75"> Return and Refund Policy</a>
+            </li>
             <li>
               <a href="/sitemap.xml" class="text-gray-500 transition hover:opacity-75"> Sitemap </a>
             </li>
