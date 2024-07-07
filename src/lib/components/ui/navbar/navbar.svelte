@@ -97,6 +97,14 @@
               Contact
             </a>
           </li>
+          <li>
+            <a
+              class="block py-2 px-4 text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+              href="/checkout"
+            >
+              Checkout
+            </a>
+          </li>
         </ul>
       </nav>
 

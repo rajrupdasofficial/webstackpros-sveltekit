@@ -1,8 +1,9 @@
 import type { RequestHandler } from './$types';
-import { json } from '@sveltejs/kit';
 import { Client, Databases } from 'appwrite';
 import { env } from '$env/dynamic/private';
 import { uploadImageToFirebase } from '@/firebase/firebasefileupload';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import { firebase_config } from '@/firebase/firebaseconfig';
 
 const appwriteendpoint = env.APPWRITE_IO;
 const appwriteprojectid = env.APPWRITE_PROJECT_ID;
@@ -46,6 +47,46 @@ export const POST: RequestHandler = async ({ request }) => {
 		return new Response(null, {
 			status: 500,
 			statusText: 'Something went wrong with the server'
+		});
+	}
+};
+
+export const GET: RequestHandler = async () => {
+	const storage = getStorage(firebase_config);
+
+	const fetchImageUrl = async (filename) => {
+		try {
+			const downloadURL = await getDownloadURL(ref(storage, filename));
+			return downloadURL;
+		} catch (error) {
+			console.error(`Error fetching URL for ${filename}:`, error);
+			return null;
+		}
+	};
+
+	try {
+		const databases = new Databases(client);
+		const results = await databases.listDocuments(`${appwritedbid}`, `${slidercolid}`);
+
+		const imagesWithUrls = await Promise.all(
+			results.documents.map(async (doc) => {
+				const imageUrl = await fetchImageUrl(doc.filedata);
+				return {
+					imageUrl
+				};
+			})
+		);
+		return new Response(null, {
+			status: 200,
+			headers: {
+				'all-sliders': JSON.stringify(imagesWithUrls)
+			}
+		});
+	} catch (error) {
+		console.error('Error:', error);
+		return new Response(null, {
+			status: 500,
+			statusText: 'Error occurred at server side'
 		});
 	}
 };
