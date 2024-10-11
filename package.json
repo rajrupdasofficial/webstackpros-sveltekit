@@ -32,7 +32,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0-alpha.20",
-		"vite": "^5.0.3"
+		"vite": "^5.4.8"
 	},
 	"type": "module",
 	"dependencies": {
@@ -41,7 +41,7 @@
 		"argon2": "^0.40.3",
 		"bits-ui": "^0.21.10",
 		"clsx": "^2.1.1",
-		"cookie": "^0.6.0",
+		"cookie": "^0.7.0",
 		"cookies": "^0.9.1",
 		"embla-carousel-autoplay": "^8.1.5",
 		"embla-carousel-svelte": "^8.1.5",
