@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@paypal/paypal-js": "^8.1.0",
+		"@sveltejs/adapter-vercel": "^5.5.2",
 		"appwrite": "^16.1.0",
 		"argon2": "^0.41.1",
 		"bits-ui": "^0.22.0",
