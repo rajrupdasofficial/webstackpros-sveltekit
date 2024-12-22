@@ -13,7 +13,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/kit": "^2.14.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@types/eslint": "^9.6.1",
 		"autoprefixer": "^10.4.19",
@@ -41,7 +41,7 @@
 		"argon2": "^0.41.1",
 		"bits-ui": "^0.22.0",
 		"clsx": "^2.1.1",
-		"cookie": "^1.0.2",
+		"cookie": "^0.7.1",
 		"cookies": "^0.9.1",
 		"embla-carousel-autoplay": "^8.1.5",
 		"embla-carousel-svelte": "^8.1.5",
