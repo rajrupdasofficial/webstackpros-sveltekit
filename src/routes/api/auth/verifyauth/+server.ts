@@ -5,22 +5,31 @@ import { env } from '$env/dynamic/private';
 
 export const GET: RequestHandler = async (event) => {
 	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
+	// console.log(cookies);
+	// const jwttoken = cookies['intercom'];
+	// console.log(jwttoken);
+	// const decodedtoken = jwt.decode(jwttoken);
+	// const userid = decodedtoken.userid;
+	// console.log(userid);
+
 	if (cookies === null || cookies === undefined) {
 		return new Response(null, {
 			status: 404,
 			statusText: 'Now JWT value hasbeen provded'
 		});
 	}
-	const { token, refresh_token } = cookies;
+	const { intercom, refresh_token } = cookies;
+	// const userdetails = jwt.decode(intercom);
+	// console.log(userdetails.userid);
 	const secretkey = env.SECRET_KEY;
 
-	if (!refresh_token && !token) {
+	if (!refresh_token && !intercom) {
 		return new Response(null, { status: 401, statusText: 'Unauthorized user' });
 	}
 
 	try {
-		if (token !== null) {
-			const user = jwt.verify(token, secretkey) as Record<string, string>;
+		if (intercom !== null) {
+			const user = jwt.verify(intercom, secretkey) as Record<string, string>;
 			return new Response(null, {
 				status: 200,
 				headers: {

@@ -47,7 +47,7 @@ export const POST: RequestHandler = async ({ request }) => {
 				headers: {
 					'set-cookie': [
 						`refresh_token=${refresh_token};Max-Age=${30 * 24 * 60 * 60};Path=/;${secure} HttpOnly`,
-						`token=${token};Max-Age=${15 * 60};Path=/;${secure} HttpOnly`
+						`intercom=${token};Max-Age=${15 * 60};Path=/;${secure} HttpOnly`
 					].join(', ')
 				}
 			});
@@ -57,7 +57,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			headers: {
 				'set-cookie': [
 					`refresh_token=${refresh_token};Max-Age=${30 * 24 * 60 * 60};Path=/;${secure} HttpOnly`,
-					`token=${token};Max-Age=${15 * 60};Path=/;${secure} HttpOnly`
+					`intercom=${token};Max-Age=${15 * 60};Path=/;${secure} HttpOnly`
 				].join(', ')
 			}
 		});
